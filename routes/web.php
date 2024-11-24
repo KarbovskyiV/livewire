@@ -28,5 +28,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::view('posts/create', 'posts.create');
+Route::view('posts/{post}/edit', 'posts.edit');
 
 require __DIR__.'/auth.php';
