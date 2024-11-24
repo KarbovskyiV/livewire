@@ -6,7 +6,7 @@
     <form method="POST" wire:submit="save">
         <div>
             <label for="title" class="block font-medium text-sm text-amber-700">Title</label>
-            <input id="title" wire:model.blur="form.title" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm" type="text"/>
+            <input id="title" wire:model="form.title" wire:keydown="validateTitle" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm" type="text"/>
 
             @error('form.title')
             <span class="mt-2 text-sm text-red-600">{{ $message }}</span>
