@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\PostForm;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class CreatePost extends Component
@@ -17,6 +18,11 @@ class CreatePost extends Component
         return view('livewire.create-post');
     }
 
+    public function updatedFormTitle(): void
+    {
+        $this->form->title = Str::headline($this->form->title);
+    }
+
     public function save(): void
     {
         $this->validate();
@@ -26,8 +32,8 @@ class CreatePost extends Component
         $this->success = true;
     }
 
-    public function validateTitle(): void
+    public function validateBody(): void
     {
-        $this->validateOnly('form.title');
+        $this->validateOnly('form.body');
     }
 }
