@@ -2,6 +2,7 @@
 
 use App\Livewire\CreatePost;
 use App\Livewire\ShowHelp;
+use App\Livewire\ShowPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -32,5 +33,6 @@ Route::middleware('auth')->group(function () {
 Route::get('posts/create', CreatePost::class);
 Route::view('posts/{post}/edit', 'posts.edit');
 Route::get('help', ShowHelp::class);
+Route::get('show-post', ShowPost::class);
 
 require __DIR__.'/auth.php';
