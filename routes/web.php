@@ -3,6 +3,7 @@
 use App\Livewire\CreatePost;
 use App\Livewire\ShowHelp;
 use App\Livewire\ShowPost;
+use App\Livewire\TodosList;
 use App\Livewire\ViewPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -36,5 +37,6 @@ Route::view('posts/{post}/edit', 'posts.edit');
 Route::get('help', ShowHelp::class);
 Route::get('show-post', ShowPost::class);
 Route::get('post/{post}', ViewPost::class);
+Route::get('todos', TodosList::class);
 
 require __DIR__.'/auth.php';
