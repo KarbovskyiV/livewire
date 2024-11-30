@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\CreatePost;
+use App\Livewire\ShowComments;
 use App\Livewire\ShowHelp;
 use App\Livewire\ShowPost;
 use App\Livewire\TodosList;
