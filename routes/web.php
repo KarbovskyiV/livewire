@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Livewire\CreatePost;
+use App\Livewire\Products;
 use App\Livewire\ShowHelp;
 use App\Livewire\ShowPost;
 use App\Livewire\TodosList;
@@ -33,13 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('products', [ProductController::class, 'index']);
+Route::get('products', Products::class);
 
 Route::get('posts/create', CreatePost::class);
 Route::view('posts/{post}/edit', 'posts.edit');
 Route::get('help', ShowHelp::class);
 Route::get('show-post', ShowPost::class);
 Route::get('post/{post}', ViewPost::class);
+
 Route::get('todos', TodosList::class);
 
 require __DIR__.'/auth.php';
