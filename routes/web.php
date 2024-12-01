@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Livewire\CreatePost;
-use App\Livewire\ShowComments;
 use App\Livewire\ShowHelp;
 use App\Livewire\ShowPost;
 use App\Livewire\TodosList;
@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('products', [ProductController::class, 'index']);
 
 Route::get('posts/create', CreatePost::class);
 Route::view('posts/{post}/edit', 'posts.edit');
