@@ -14,21 +14,21 @@ class ProductsForm extends Form
     public string $name = '';
     #[Validate('required|min:3')]
     public string $description = '';
-    #[Validate('required|exists:categories,id', as: 'category')]
-    public int $category_id;
     #[Validate('required|string')]
     public string $color = '';
     #[Validate('boolean')]
     public bool $in_stock = true;
+    #[Validate('required|array', as: 'category')]
+    public array $productCategories = [];
 
     public function setProduct(Product $product): void
     {
         $this->product = $product;
         $this->name = $product->name;
         $this->description = $product->description;
-        $this->category_id = $product->category_id;
         $this->color = $product->color;
         $this->in_stock = $product->in_stock;
+        $this->productCategories = $product->categories()->pluck('id')->toArray();
     }
 
     /**
@@ -38,7 +38,8 @@ class ProductsForm extends Form
     {
         $this->validate();
 
-        Product::query()->create($this->all());
+        $product = Product::query()->create($this->all());
+        $product->categories()->sync($this->productCategories);
     }
 
     /**
@@ -49,5 +50,6 @@ class ProductsForm extends Form
         $this->validate();
 
         $this->product->update($this->all());
+        $this->product->categories()->sync($this->productCategories);
     }
 }

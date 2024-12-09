@@ -27,9 +27,13 @@ class Products extends Component
 
     public function render(): View
     {
-        $products = Product::with('category')
-            ->when($this->searchQuery !== '', fn(Builder $query) => $query->where('name', 'like', '%'. $this->searchQuery .'%'))
+        $products = Product::with('categories')
             ->when($this->searchCategory > 0, fn(Builder $query) => $query->where('category_id', $this->searchCategory))
+            ->when($this->searchCategory > 0, function (Builder $query) {
+                $query->whereHas('categories', function (Builder $query2) {
+                    $query2->where('id', $this->searchCategory);
+                });
+            })
             ->paginate(10);
 
         return view('livewire.products', [
