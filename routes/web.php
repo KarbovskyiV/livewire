@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Livewire\CreatePost;
 use App\Livewire\Products;
+use App\Livewire\ProductsCreate;
 use App\Livewire\ShowHelp;
 use App\Livewire\ShowPost;
 use App\Livewire\TodosList;
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('products', Products::class);
+Route::get('products/create', ProductsCreate::class)->name('products.create');
 
 Route::get('posts/create', CreatePost::class);
 Route::view('posts/{post}/edit', 'posts.edit');

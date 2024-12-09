@@ -43,4 +43,9 @@ class Products extends Component
             $this->resetPage();
         }
     }
+
+    public function deleteProduct(int $productId): void
+    {
+        Product::query()->where('id', $productId)->delete();
+    }
 }
