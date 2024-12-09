@@ -13,7 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory(10)->create();
-        Product::factory(50)->create();
+        Category::factory(5)->create();
+
+        $categories = collect(Category::query()->pluck('id'));
+        Product::factory(50)
+            ->create()
+            ->each(function (Product $product) use ($categories) {
+                $product->categories()->sync($categories->random(2));
+            });
     }
 }
