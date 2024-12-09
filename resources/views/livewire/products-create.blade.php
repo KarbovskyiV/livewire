@@ -1,9 +1,10 @@
 <form method="POST" wire:submit="save">
     <div>
         <label for="name" class="block font-medium text-sm text-gray-700">Name</label>
-        <input id="name" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm" type="text" wire:model="name"/>
+        <input id="name" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm" type="text"
+               wire:model="form.name"/>
 
-        @error('name')
+        @error('form.name')
         <span class="mt-2 text-sm text-red-600">{{ $message }}</span>
         @enderror
     </div>
@@ -11,17 +12,17 @@
     <div class="mt-4">
         <label for="description" class="block font-medium text-sm text-gray-700">Description</label>
         <textarea id="description" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm"
-                  wire:model="description">
+                  wire:model="form.description">
         </textarea>
 
-        @error('description')
+        @error('form.description')
         <span class="mt-2 text-sm text-red-600">{{ $message }}</span>
         @enderror
     </div>
 
     <div class="mt-4">
         <label for="category">Category</label>
-        <select wire:model="category_id" name="category" id="category"
+        <select wire:model="form.category_id" name="category" id="category"
                 class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
             <option value="0">-- CHOOSE CATEGORY --</option>
             @foreach($categories as $id => $category)
@@ -29,7 +30,7 @@
             @endforeach
         </select>
 
-        @error('category_id')
+        @error('form.category_id')
         <span class="mt-2 text-sm text-red-600">{{ $message }}</span>
         @enderror
     </div>
