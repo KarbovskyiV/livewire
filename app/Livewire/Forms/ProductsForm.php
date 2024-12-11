@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Product;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -18,6 +19,8 @@ class ProductsForm extends Form
     public string $color = '';
     #[Validate('boolean')]
     public bool $in_stock = true;
+    #[Validate('image')]
+    public UploadedFile $image;
     #[Validate('required|array', as: 'category')]
     public array $productCategories = [];
 
@@ -38,7 +41,9 @@ class ProductsForm extends Form
     {
         $this->validate();
 
-        $product = Product::query()->create($this->all());
+        $filename = $this->image->store('products', 'public');
+
+        $product = Product::query()->create($this->all() + ['photo' => $filename]);
         $product->categories()->sync($this->productCategories);
     }
 
@@ -49,7 +54,9 @@ class ProductsForm extends Form
     {
         $this->validate();
 
-        $this->product->update($this->all());
+        $filename = $this->image->store('products', 'public');
+
+        $this->product->update($this->all() + ['photo' => $filename]);
         $this->product->categories()->sync($this->productCategories);
     }
 }

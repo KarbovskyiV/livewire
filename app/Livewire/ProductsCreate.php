@@ -7,9 +7,12 @@ use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\View\View;
+use Livewire\WithFileUploads;
 
 class ProductsCreate extends Component
 {
+    use WithFileUploads;
+
     public ProductsForm $form;
     public Collection $categories;
 
