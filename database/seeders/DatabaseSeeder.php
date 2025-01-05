@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\ParentProduct;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 
@@ -32,5 +33,9 @@ class DatabaseSeeder extends Seeder
         $country->cities()->create(['name' => 'Washington']);
         $country->cities()->create(['name' => 'New York City']);
         $country->cities()->create(['name' => 'Denver']);
+
+        ParentProduct::query()->create(['name' => 'iPhone', 'price' => 999.99]);
+        ParentProduct::query()->create(['name' => 'iPad', 'price' => 699.99]);
+        ParentProduct::query()->create(['name' => 'iMac', 'price' => 1999.99]);
     }
 }
