@@ -2,6 +2,7 @@
 
 use App\Livewire\CreatePost;
 use App\Livewire\Dropdowns;
+use App\Livewire\ParentChildren;
 use App\Livewire\Products;
 use App\Livewire\ProductsCreate;
 use App\Livewire\ProductsEdit;
@@ -47,6 +48,7 @@ Route::get('show-post', ShowPost::class);
 Route::get('post/{post}', ViewPost::class);
 
 Route::get('dropdowns', Dropdowns::class);
+Route::get('parent-children', ParentChildren::class);
 
 Route::get('todos', TodosList::class);
 
