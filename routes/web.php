@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\CreatePost;
+use App\Livewire\Dropdowns;
 use App\Livewire\Products;
 use App\Livewire\ProductsCreate;
 use App\Livewire\ProductsEdit;
@@ -44,6 +45,8 @@ Route::view('posts/{post}/edit', 'posts.edit');
 Route::get('help', ShowHelp::class);
 Route::get('show-post', ShowPost::class);
 Route::get('post/{post}', ViewPost::class);
+
+Route::get('dropdowns', Dropdowns::class);
 
 Route::get('todos', TodosList::class);
 
