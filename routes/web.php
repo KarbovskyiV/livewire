@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Autorefresh;
 use App\Livewire\CreatePost;
 use App\Livewire\Dropdowns;
 use App\Livewire\ParentChildren;
@@ -49,6 +50,7 @@ Route::get('post/{post}', ViewPost::class);
 
 Route::get('dropdowns', Dropdowns::class);
 Route::get('parent-children', ParentChildren::class);
+Route::get('autorefresh', Autorefresh::class);
 
 Route::get('todos', TodosList::class);
 
