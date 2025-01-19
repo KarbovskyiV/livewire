@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Post;
+use App\Services\PostService;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -25,9 +26,12 @@ class PostForm extends Form
         $this->body = $post->body;
     }
 
-    public function save(): void
+    public function save(PostService $postService): void
     {
-        Post::create($this->all());
+        $postService->storePost($this->title, $this->body);
+        // or call like that
+//        app(PostService::class)->storePost($this->title, $this->body);
+//        (new PostService())->storePost($this->title, $this->body);
 
         $this->reset('title', 'body');
     }
